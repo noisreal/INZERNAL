@@ -4,9 +4,10 @@
 #include <sdk/GameUpdatePacket.h>
 #include <sdk/NetAvatar.h>
 
+class EnetPeer;
 namespace sdk {
 	GameLogic* gamelogic();
 	uintptr_t* enetclient();
-	uintptr_t* enetpeer();
+    EnetPeer* enetpeer();
 
 }

@@ -29,6 +29,7 @@ class WorldObjectMap;
 class NetAvatar;
 class LevelTouchComponent;
 class WorldCamera;
+class EnetPeer;
 
 namespace types {
 	//hooks
@@ -38,7 +39,7 @@ namespace types {
 	using	NetAvatar_CanMessageT4		= bool(__cdecl*)(NetAvatar*);
 	using	CanPunchOrBuildNow			= bool(__cdecl*)(AvatarRenderData*);
 	using	ObjectMap_HandlePacket		= bool(__cdecl*)(WorldObjectMap*, GameUpdatePacket*);
-	using	SendPacketRaw				= void(__cdecl*)(int, void*, int, void*, void*, int);
+	using	SendPacketRaw				= void(__cdecl*)(int, GameUpdatePacket*, int, void*, EnetPeer*, int);
 	using	HandleTouch					= void(__cdecl*)( LevelTouchComponent*, CL_Vec2f, bool);
 	using	WorldCamera_OnUpdate		= void(__cdecl*)(WorldCamera*, CL_Vec2f, CL_Vec2f);
 

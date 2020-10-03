@@ -14,4 +14,6 @@ uintptr_t* sdk::enetclient()
 }
 
 //been this way for over 20 versions, probably will not get updated as its in enetclient.
-uintptr_t* sdk::enetpeer() { return (uintptr_t*)((uintptr_t)enetclient() + 200); }
+EnetPeer* sdk::enetpeer() {
+    return (EnetPeer*)((uintptr_t)enetclient() + 200);
+}

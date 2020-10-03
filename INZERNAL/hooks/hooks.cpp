@@ -8,6 +8,7 @@
 #include <windows.h>
 #include <iomanip>
 #include <thread>
+#include <hooks\SendPacketRaw.h>
 
 #define ORIGINAL(x) types::x hooks::orig::##x{};
 #define MAKEHOOK(x) MH_CreateHook(LPVOID(##x), hooks::##x, (void**)(&orig::##x));
@@ -144,9 +145,6 @@ bool active = false;
 LRESULT __stdcall hooks::hooked_wndproc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam) {
     active = GetActiveWindow() == global::hwnd;
 
-    if (msg == WM_KEYDOWN && wparam == VK_ESCAPE)
-        return true;
-
     //TODO: with imgui
     //if (orig::wndproc(wnd, msg, wparam, lparam))
     //	return true;
@@ -203,10 +201,8 @@ bool __cdecl hooks::ObjectMap_HandlePacket(WorldObjectMap* map, GameUpdatePacket
     return orig::ObjectMap_HandlePacket(map, packet);
 }
 
-void __cdecl hooks::SendPacketRaw(int type, void* data, int size, void* a4, void* peer, int flag) {
-    GameUpdatePacket* packet = (GameUpdatePacket*)data;
-    packet->debug_print("sendpacketraw");
-    orig::SendPacketRaw(type, data, size, a4, peer, flag);
+void __cdecl hooks::SendPacketRaw(int type, GameUpdatePacket* packet, int size, void* ext, EnetPeer* peer, int flag) {
+    SendPacketRaw::Hook(orig::SendPacketRaw, type, packet, size, ext, peer, flag);
 }
 
 void __cdecl hooks::HandleTouch(LevelTouchComponent* touch, CL_Vec2f pos, bool started) {

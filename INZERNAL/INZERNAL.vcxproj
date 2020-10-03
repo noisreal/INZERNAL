@@ -66,6 +66,7 @@
     <ClInclude Include="core\nlhomann\json.hpp" />
     <ClInclude Include="core\utils.h" />
     <ClInclude Include="hooks\hooks.h" />
+    <ClInclude Include="hooks\SendPacketRaw.h" />
     <ClInclude Include="proton\bitmap.h" />
     <ClInclude Include="proton\clanlib\angle.h" />
     <ClInclude Include="proton\clanlib\circle.h" />

@@ -245,6 +245,9 @@
     <ClInclude Include="sdk\WorldCamera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="hooks\SendPacketRaw.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="inzernal.def">
