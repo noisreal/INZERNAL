@@ -5,6 +5,7 @@
 #include <core/minhook/hook.h>
 #include <core/utils.h>
 #include <core/gt.h>
+#include <hooks\hooks.h>
 
 bool unload_done = false;
 void on_exit() {
@@ -12,7 +13,9 @@ void on_exit() {
 		return;
 
 	printf("Cleaning up internal changes....\n");
+	hooks::destroy();
 	Sleep(300);
+
 	printf("Cleaning done\tDetaching console and exiting process.\n");
 	Sleep(300);
 	utils::detach_console();
@@ -35,6 +38,7 @@ void on_inject() {
 	if (!gt::patch_banbypass())
 		on_exit();
 
+	hooks::init();
 	while (!global::unload)
 		Sleep(10);
 	on_exit();
