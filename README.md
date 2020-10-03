@@ -29,3 +29,13 @@ Growtopia internal cheat focused around enhancements and framework, that is load
   * V.41 (Recommended version)
   * V3.39
   * V.32
+
+
+### Dependencies used in this project 
+#### Note that none of these need to be downloaded, they are included in the project
+* [libpebliss](https://github.com/asinbow/libpebliss)
+* [minhook](https://github.com/TsudaKageyu/minhook)
+* [json](https://github.com/nlohmann/json)
+* [miniz](https://github.com/richgel999/miniz)
+* [proton](https://github.com/SethRobinson/proton) (small parts + modified)
+* [imgui](https://github.com/ocornut/imgui) (modified)
