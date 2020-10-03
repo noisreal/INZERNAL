@@ -1,14 +1,9 @@
 # INZERNAL
-Growtopia internal cheat focused around enhancements and framework, that is loaded automatically.
+#### Growtopia internal cheat focused around enhancements, clean code, support across versions, and frameworok
 
-## Currently in development, do not make pull requests
 
-### Information
-* Not to be confused with "internal", the first internal ever made for growtopia, that was developed by atipls, me, and tero. 
-* That is our private internal and will not be released.
-* INZERNAL uses some small parts from it, but otherwise this project is fully made by me.
-* Patcher coded by ness
-
+#### Features
+* Currently adding more, see code for yourself.
 
 ### Building yourself
 1. Download project
@@ -48,6 +43,14 @@ Growtopia internal cheat focused around enhancements and framework, that is load
 * **No support for custom settings right now (will support later)**
 * [Downloads here](https://github.com/ama6nen/INZERNAL/releases)
 
+
+
+### Acknowledgments
+* This is not **internal**, the first internal ever made for growtopia, that was developed by atipls, me, and tero. 
+* That is our private internal and will not be released or sold.
+* INZERNAL uses some small parts from internal
+* Patcher made by ness
+* Otherwise this project is fully made by me
 
 ### Dependencies used in this project 
 #### Note that none of these need to be downloaded, they are included in the project
