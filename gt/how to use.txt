@@ -1,7 +1,7 @@
 
 NOTE:
 these files are unneeded if you already have V3.41 or something
-INZERNAL also probably works with newer version like V3.45.
+INZERNAL also works with newer version like V3.45.
 
 
 1. Simply rename your chosen file (ex. 3.41_patched.exe) to Growtopia.exe
@@ -16,5 +16,6 @@ You can inject and deinject multiple times with no worry.
 
 V3.41_patched: 		used patcher.exe
 V3.41_unmodified: 	stock version
-V3.32_custom:		patched to be able to open multiple instances
-V3.32_custom_patched:	used patcher.exe + multiple instances patched
+V3.45_patched: 		used patcher.exe
+V3.45_unmodified: 	stock version
+
