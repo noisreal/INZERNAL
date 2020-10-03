@@ -14,10 +14,10 @@ void on_exit() {
 
 	printf("Cleaning up internal changes....\n");
 	hooks::destroy();
-	Sleep(300);
+	Sleep(200);
 
 	printf("Cleaning done\tDetaching console and exiting process.\n");
-	Sleep(300);
+	Sleep(600);
 	utils::detach_console();
 
 	unload_done = true;
@@ -34,6 +34,7 @@ void on_inject() {
 	utils::printc("1;40;31", "\tspecial thanks to ness for patcher");
 	utils::printc("92", "\tmade by ama - https://github.com/ama6nen/INZERNAL\n");
 
+	printf("Base address: 0x%llx\n", (uintptr_t)global::gt);
 	utils::seed_random();
 	if (!gt::patch_banbypass())
 		on_exit();
