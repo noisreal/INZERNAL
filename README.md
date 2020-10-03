@@ -5,6 +5,9 @@
 #### Features
 * Currently adding more, see code for yourself.
 
+### Setup tutorial
+[![INZERNAL setup tutorial](https://i.ytimg.com/vi/0408qVbICEI/hqdefault.jpg)](https://www.youtube.com/watch?v=0408qVbICEI "INZERNAL setup tutorial")
+
 ### Building yourself
 1. Download project
 1. Make sure you are using Release x64
