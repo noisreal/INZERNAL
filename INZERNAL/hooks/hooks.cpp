@@ -21,6 +21,7 @@ ORIGINAL(CanPunchOrBuildNow);
 ORIGINAL(ObjectMap_HandlePacket);
 ORIGINAL(SendPacketRaw);
 ORIGINAL(HandleTouch);
+ORIGINAL(WorldCamera_OnUpdate);
 
 WNDPROC hooks::orig::wndproc; //wndproc is special case
 
@@ -56,14 +57,15 @@ void hooks::init() {
     // clang-format off
 	//this is where all the function signatures are 
 	auto
-		App_GetVersion = utils::find_func_start("28 FF 15 ?? ?? ?? ?? FF 15"),
-		BaseApp_SetFPSLimit = utils::find_func_start("00 00 0F 57 C0 0F 2F C8 72"),
-		LogMsg = utils::find_func_start("00 28 00 00 45"),
-		CanMessageT4 = detail::get_call("48 8b ce e8 ? ? ? ? 84 c0 74 ? e8", 3),
-		CanPunchOrBuildNow = utils::find_func_start("00 00 83 e9 03 74 ? 83 e9 01 74 ? 83 e9 01"),
-		ObjectMap_HandlePacket = utils::find_func_start("44 8B ?? ?? 41 83 f8 FF 75 ?? 44"),
-		SendPacketRaw = utils::find_func_start("00 81 FE 40 42 0F 00"),
-		HandleTouch = utils::find_func_start("83 B8 ?? ?? ?? ?? 12 75");
+		App_GetVersion                  = utils::find_func_start("28 FF 15 ?? ?? ?? ?? FF 15"),
+		BaseApp_SetFPSLimit             = utils::find_func_start("00 00 0F 57 C0 0F 2F C8 72"),
+		LogMsg                          = utils::find_func_start("00 28 00 00 45"),
+		CanMessageT4                    = detail::get_call("48 8b ce e8 ? ? ? ? 84 c0 74 ? e8", 3),
+		CanPunchOrBuildNow              = utils::find_func_start("00 00 83 e9 03 74 ? 83 e9 01 74 ? 83 e9 01"),
+		ObjectMap_HandlePacket          = utils::find_func_start("44 8B ?? ?? 41 83 f8 FF 75 ?? 44"),
+		SendPacketRaw                   = utils::find_func_start("00 81 FE 40 42 0F 00"),
+		HandleTouch                     = utils::find_func_start("83 B8 ?? ?? ?? ?? 12 75"),
+        WorldCamera_OnUpdate            = utils::find_func_start("89 43 10 0f 2f");
 
 	MAKEHOOK(App_GetVersion);
 	MAKEHOOK(BaseApp_SetFPSLimit);
@@ -73,6 +75,7 @@ void hooks::init() {
 	MAKEHOOK(ObjectMap_HandlePacket);
 	MAKEHOOK(SendPacketRaw);
 	MAKEHOOK(HandleTouch);
+    MAKEHOOK(WorldCamera_OnUpdate);
 
 	orig::wndproc = WNDPROC(SetWindowLongPtrW(global::hwnd, -4, LONG_PTR(hooked_wndproc)));
 
@@ -218,4 +221,11 @@ void __cdecl hooks::HandleTouch(LevelTouchComponent* touch, CL_Vec2f pos, bool s
     else
         orig::HandleTouch(touch, pos, started);
 
+}
+
+void __cdecl hooks::WorldCamera_OnUpdate(WorldCamera* camera, CL_Vec2f unk, CL_Vec2f unk2) {
+    if (opt::tp_click && GetAsyncKeyState(VK_CONTROL)) //if we dont do this then there is major sliding when teleporting.
+        return;
+
+    orig::WorldCamera_OnUpdate(camera, unk, unk2);
 }
