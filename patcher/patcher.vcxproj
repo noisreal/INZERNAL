@@ -17,7 +17,6 @@
       <Configuration>Release</Configuration>
       <Platform>x64</Platform>
     </ProjectConfiguration>
-
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -53,25 +52,23 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
-
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
-  <ImportGroup Label="Shared" >
+  <ImportGroup Label="Shared">
   </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-    <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-      <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    </ImportGroup>
-
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
@@ -84,8 +81,9 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(SolutionDir)bin\</OutDir>
+    <IntDir>$(SolutionDir)obj\</IntDir>
   </PropertyGroup>
-
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -128,7 +126,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
@@ -139,11 +137,97 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AssemblyDebug>false</AssemblyDebug>
+      <LinkTimeCodeGeneration>Default</LinkTimeCodeGeneration>
     </Link>
+    <BuildLog />
   </ItemDefinitionGroup>
-
-  <ItemGroup></ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="pe_lib\entropy.cpp" />
+    <ClCompile Include="pe_lib\file_version_info.cpp" />
+    <ClCompile Include="pe_lib\message_table.cpp" />
+    <ClCompile Include="pe_lib\pe_base.cpp" />
+    <ClCompile Include="pe_lib\pe_bound_import.cpp" />
+    <ClCompile Include="pe_lib\pe_checksum.cpp" />
+    <ClCompile Include="pe_lib\pe_debug.cpp" />
+    <ClCompile Include="pe_lib\pe_directory.cpp" />
+    <ClCompile Include="pe_lib\pe_dotnet.cpp" />
+    <ClCompile Include="pe_lib\pe_exception.cpp" />
+    <ClCompile Include="pe_lib\pe_exception_directory.cpp" />
+    <ClCompile Include="pe_lib\pe_exports.cpp" />
+    <ClCompile Include="pe_lib\pe_factory.cpp" />
+    <ClCompile Include="pe_lib\pe_imports.cpp" />
+    <ClCompile Include="pe_lib\pe_load_config.cpp" />
+    <ClCompile Include="pe_lib\pe_properties.cpp" />
+    <ClCompile Include="pe_lib\pe_properties_generic.cpp" />
+    <ClCompile Include="pe_lib\pe_rebuilder.cpp" />
+    <ClCompile Include="pe_lib\pe_relocations.cpp" />
+    <ClCompile Include="pe_lib\pe_resources.cpp" />
+    <ClCompile Include="pe_lib\pe_resource_manager.cpp" />
+    <ClCompile Include="pe_lib\pe_resource_viewer.cpp" />
+    <ClCompile Include="pe_lib\pe_rich_data.cpp" />
+    <ClCompile Include="pe_lib\pe_section.cpp" />
+    <ClCompile Include="pe_lib\pe_tls.cpp" />
+    <ClCompile Include="pe_lib\resource_bitmap_reader.cpp" />
+    <ClCompile Include="pe_lib\resource_bitmap_writer.cpp" />
+    <ClCompile Include="pe_lib\resource_cursor_icon_reader.cpp" />
+    <ClCompile Include="pe_lib\resource_cursor_icon_writer.cpp" />
+    <ClCompile Include="pe_lib\resource_data_info.cpp" />
+    <ClCompile Include="pe_lib\resource_message_list_reader.cpp" />
+    <ClCompile Include="pe_lib\resource_string_table_reader.cpp" />
+    <ClCompile Include="pe_lib\resource_version_info_reader.cpp" />
+    <ClCompile Include="pe_lib\resource_version_info_writer.cpp" />
+    <ClCompile Include="pe_lib\utils.cpp" />
+    <ClCompile Include="pe_lib\version_info_editor.cpp" />
+    <ClCompile Include="pe_lib\version_info_viewer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pe_lib\entropy.h" />
+    <ClInclude Include="pe_lib\file_version_info.h" />
+    <ClInclude Include="pe_lib\message_table.h" />
+    <ClInclude Include="pe_lib\pe_base.h" />
+    <ClInclude Include="pe_lib\pe_bliss.h" />
+    <ClInclude Include="pe_lib\pe_bliss_resources.h" />
+    <ClInclude Include="pe_lib\pe_bound_import.h" />
+    <ClInclude Include="pe_lib\pe_checksum.h" />
+    <ClInclude Include="pe_lib\pe_debug.h" />
+    <ClInclude Include="pe_lib\pe_directory.h" />
+    <ClInclude Include="pe_lib\pe_dotnet.h" />
+    <ClInclude Include="pe_lib\pe_exception.h" />
+    <ClInclude Include="pe_lib\pe_exception_directory.h" />
+    <ClInclude Include="pe_lib\pe_exports.h" />
+    <ClInclude Include="pe_lib\pe_factory.h" />
+    <ClInclude Include="pe_lib\pe_imports.h" />
+    <ClInclude Include="pe_lib\pe_load_config.h" />
+    <ClInclude Include="pe_lib\pe_properties.h" />
+    <ClInclude Include="pe_lib\pe_properties_generic.h" />
+    <ClInclude Include="pe_lib\pe_rebuilder.h" />
+    <ClInclude Include="pe_lib\pe_relocations.h" />
+    <ClInclude Include="pe_lib\pe_resources.h" />
+    <ClInclude Include="pe_lib\pe_resource_manager.h" />
+    <ClInclude Include="pe_lib\pe_resource_viewer.h" />
+    <ClInclude Include="pe_lib\pe_rich_data.h" />
+    <ClInclude Include="pe_lib\pe_section.h" />
+    <ClInclude Include="pe_lib\pe_structures.h" />
+    <ClInclude Include="pe_lib\pe_tls.h" />
+    <ClInclude Include="pe_lib\resource_bitmap_reader.h" />
+    <ClInclude Include="pe_lib\resource_bitmap_writer.h" />
+    <ClInclude Include="pe_lib\resource_cursor_icon_reader.h" />
+    <ClInclude Include="pe_lib\resource_cursor_icon_writer.h" />
+    <ClInclude Include="pe_lib\resource_data_info.h" />
+    <ClInclude Include="pe_lib\resource_internal.h" />
+    <ClInclude Include="pe_lib\resource_message_list_reader.h" />
+    <ClInclude Include="pe_lib\resource_string_table_reader.h" />
+    <ClInclude Include="pe_lib\resource_version_info_reader.h" />
+    <ClInclude Include="pe_lib\resource_version_info_writer.h" />
+    <ClInclude Include="pe_lib\stdint_defs.h" />
+    <ClInclude Include="pe_lib\utils.h" />
+    <ClInclude Include="pe_lib\version_info_editor.h" />
+    <ClInclude Include="pe_lib\version_info_types.h" />
+    <ClInclude Include="pe_lib\version_info_viewer.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
