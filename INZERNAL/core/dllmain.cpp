@@ -22,6 +22,9 @@ void on_inject() {
 	on_exit();
 }
 
+//for patcher to work
+void dll (){ }
+
 BOOL WINAPI DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
 {
 	if (reason == DLL_PROCESS_ATTACH) {

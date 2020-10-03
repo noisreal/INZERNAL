@@ -3,11 +3,6 @@
 
 #include "../clanlib/vec3.h"
 
-#ifdef _CONSOLE
-#if !defined GLAPI
-#include "Renderer/GL/gl.h"
-	#endif
-#endif
 struct rtPlane
 {
 	rtPlane(){};
