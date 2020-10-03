@@ -226,6 +226,10 @@
       <AdditionalOptions>/NOIMPLIB %(AdditionalOptions)</AdditionalOptions>
       <ImportLibrary />
     </Link>
+    <PostBuildEvent>
+      <Command>cd $(SolutionDir)bin\
+del *.exp</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
