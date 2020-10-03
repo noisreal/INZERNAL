@@ -9,26 +9,44 @@ Growtopia internal cheat focused around enhancements and framework, that is load
 * INZERNAL uses some small parts from it, but otherwise this project is fully made by me.
 * Patcher coded by ness
 
-### How to build and use
+
+### Building yourself
 1. Download project
 1. Make sure you are using Release x64
+1. (Optional) Modify source if you want to
 1. Build all projects
-1. Drag your chosen Growtopia.exe file into patcher
-1. After patching bring INZERNAL.dl to Growtopia directory
-1. INZERNAL will launch automatically with Growtopia
+1. Choose your method of injection
+   * injector (See below)
+   * patcher (See below)
+   * Any custom injector
+   * Both injector and patcher
 
-### Injection alternatives
-* Instead of using patcher it is possible to just inject INZERNAL.dll into growtopia
-* There is also injector project, that will automatically inject INZERNAL with F1 key
-* You can also use any chosen custom injector
+### Using the injector
+* Keep INZERNAL.dll in the same directory
+* F1 will inject INZERNAL to Growtopia
+* F3 will uninject INZERNAL and restore everything (Built into INZERNAL)
+* F4 will quit injector
+* Requires admin permissions due to growtopia changing token permissions
 
-### Verified working versions
+### Using the patcher
+* Drag any unpatched Growtopia file into patcher
+* Put INZERNAL.dll into same directory as Growtopia
+* When you launch Growtopia, INZERNAL.dll is automatically loaded
+* Does not require admin perms like injector
+* **You can use injector with patched file too**
+
+### Verified compatible Growtopia versions
 * Some patterns might be outdated for some versions
-* You can find some of the growtopia binaries in "gt" folder
+* Find versions [here](https://github.com/ama6nen/INZERNAL/tree/main/gt)
 * Verified working Growtopia versions are
   * V.41 (Recommended version)
   * V3.39
   * V.32
+
+### Downloads
+* No need to build anything yourself
+* **No support for custom settings right now (will support later)**
+* [Downloads here](https://github.com/ama6nen/INZERNAL/releases)
 
 
 ### Dependencies used in this project 
