@@ -21,12 +21,14 @@
   <ItemGroup>
     <ClCompile Include="core\dllmain.cpp" />
     <ClCompile Include="core\globals.cpp" />
+    <ClCompile Include="core\gt.cpp" />
     <ClCompile Include="core\minhook\buffer.c" />
     <ClCompile Include="core\minhook\hde\hde32.c" />
     <ClCompile Include="core\minhook\hde\hde64.c" />
     <ClCompile Include="core\minhook\hook.c" />
     <ClCompile Include="core\minhook\trampoline.c" />
     <ClCompile Include="core\miniz\miniz.c" />
+    <ClCompile Include="core\utils.cpp" />
     <ClCompile Include="proton\clanlib\angle.cpp" />
     <ClCompile Include="proton\clanlib\line_segment.cpp" />
     <ClCompile Include="proton\clanlib\mat2.cpp" />
@@ -48,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="core\globals.h" />
+    <ClInclude Include="core\gt.h" />
+    <ClInclude Include="core\json.hpp" />
     <ClInclude Include="core\minhook\buffer.h" />
     <ClInclude Include="core\minhook\hde\hde32.h" />
     <ClInclude Include="core\minhook\hde\hde64.h" />
@@ -58,6 +62,7 @@
     <ClInclude Include="core\minhook\trampoline.h" />
     <ClInclude Include="core\miniz\miniz.h" />
     <ClInclude Include="core\nlhomann\json.hpp" />
+    <ClInclude Include="core\utils.h" />
     <ClInclude Include="proton\bitmap.h" />
     <ClInclude Include="proton\clanlib\angle.h" />
     <ClInclude Include="proton\clanlib\circle.h" />

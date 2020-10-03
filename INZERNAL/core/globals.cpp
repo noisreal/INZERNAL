@@ -12,6 +12,7 @@ HMODULE global::self = NULL;
 HWND global::hwnd = NULL;
 App* global::app = nullptr;
 bool global::unload = false;
+void* global::gt = nullptr;
 
 
 //unused for now, from private internal, might use later.

@@ -17,6 +17,7 @@
 mono_crash.*
 
 intermediate/
+colors.txt
 
 # Build results
 [Dd]ebug/

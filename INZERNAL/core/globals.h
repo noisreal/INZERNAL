@@ -5,7 +5,7 @@
 #include <map>
 #include <proton/clanlib/vec2.h>
 #include <proton/Variant.h>
-#include <core/nlhomann/json.hpp>
+#include <core/json.hpp>
 #include <d3d9.h>
 #include <atomic>
 //#include "../sdk/App.hpp"
@@ -64,6 +64,7 @@ namespace global {
 	extern App* app;
 	extern bool unload;
 	extern HWND hwnd;
+	extern void* gt;
 	//	extern nlohmann::json m_cfg;
 }
 
