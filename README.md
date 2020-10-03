@@ -45,6 +45,16 @@
 * [Downloads here](https://github.com/ama6nen/INZERNAL/releases)
 
 
+### Debugging
+1. Set build to Debug x64
+1. Rebuild to be sure everything is correct
+1. Inject debug dll to Growtopia
+1. INZERNAL will disable Growtopia's token protection automatically, so admin will not be needed for debugging
+1. On visual studio go to  Debug -> Attach to Process -> Find Growtopia
+1. All done, it should be attached. If it asks for admin perms then you did not inject the dll properly.
+* Now you can set breakpoints and trace, etc.
+* You can also keep it attached and unload the library, and then reload it.
+
 
 ### Acknowledgments
 * This is not **internal**, the first internal ever made for growtopia, that was developed by atipls, me, and tero. 
