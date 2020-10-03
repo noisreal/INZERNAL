@@ -34,6 +34,7 @@
 * Some patterns might be outdated for some versions
 * Find versions [here](https://github.com/ama6nen/INZERNAL/tree/main/gt)
 * Verified working Growtopia versions are
+  * V.45
   * V.41 (Recommended version)
   * V3.39
   * V.32
