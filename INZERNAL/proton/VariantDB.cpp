@@ -198,7 +198,6 @@ bool VariantDB::Load(const string& fileName, bool* pFileExistedOut, bool bAddBas
 	if (pFileExistedOut)* pFileExistedOut = true;
 	size_t bytesRead = fread(&version, 1, sizeof(unsigned int), fp);
 	if (bytesRead == 0 || version != 1) {
-		assert(!"%s - unexpected version. Deleting file", f.c_str());
 		fclose(fp);
 		assert(!"Unexpected version?!");
 		return false;

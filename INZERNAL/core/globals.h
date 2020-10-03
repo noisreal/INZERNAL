@@ -19,12 +19,12 @@ template<typename t> inline t& operator&=(t& x, t y) { x = x & y;	return x; }
 template<typename t> inline t& operator|=(t& x, t y) { x = x | y;	return x; }
 template<typename t> inline t& operator^=(t& x, t y) { x = x ^ y;	return x; }
 
-typedef class BaseApp;
-typedef class GameUpdatePacket;
-typedef class App;
-typedef class NetAvatar;
-typedef class AvatarRenderData;
-typedef class WorldObjectMap;
+class BaseApp;
+class GameUpdatePacket;
+class App;
+class NetAvatar;
+class AvatarRenderData;
+class WorldObjectMap;
 
 
 namespace types {
@@ -64,7 +64,7 @@ namespace global {
 	extern App* app;
 	extern bool unload;
 	extern HWND hwnd;
-//	extern nlohmann::json m_cfg;
+	//	extern nlohmann::json m_cfg;
 }
 
 
