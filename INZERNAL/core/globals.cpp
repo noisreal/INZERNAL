@@ -13,7 +13,7 @@ namespace opt {
 	//cheats
 	namespace cheat {
 		bool	punch_cooldown_on	=	true;	//toggle: punch cooldown
-		float	punch_cooldown_val	=	1.15f;	//punch cooldown timer. i.e fast punch
+		float	punch_cooldown_val	=	0.15f;	//punch cooldown timer. i.e fast punch
 	}
 	
 }
