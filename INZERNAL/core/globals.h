@@ -8,6 +8,8 @@
 #include <core/json.hpp>
 #include <d3d9.h>
 #include <atomic>
+
+
 //#include "../sdk/App.hpp"
 
 //from private internal, dont remember what I needed these for so I just brought them over for now
@@ -19,13 +21,12 @@ template<typename t> inline t& operator&=(t& x, t y) { x = x & y;	return x; }
 template<typename t> inline t& operator|=(t& x, t y) { x = x | y;	return x; }
 template<typename t> inline t& operator^=(t& x, t y) { x = x ^ y;	return x; }
 
-class BaseApp;
+class BaseApp {public:};
 class GameUpdatePacket;
-class App;
-class NetAvatar;
+class App : BaseApp {public:};
 class AvatarRenderData;
 class WorldObjectMap;
-
+class NetAvatar;
 
 namespace types {
 	using App_GetVersion = float(__cdecl*)(App*);
@@ -55,16 +56,22 @@ namespace col {
 
 
 namespace opt {
-	extern std::string gt_version;
-	extern float fps_limit;
+	extern float	gt_version;
+	extern float	fps_limit;
+
+	namespace cheat {
+		extern bool		punch_cooldown_on;
+		extern float	punch_cooldown_val;
+	}
+	
 }
 
 namespace global {
-	extern HMODULE self;
-	extern App* app;
-	extern bool unload;
-	extern HWND hwnd;
-	extern void* gt;
+	extern HMODULE	self;
+	extern App*		app;
+	extern bool		unload;
+	extern HWND		hwnd;
+	extern void*	gt;
 	//	extern nlohmann::json m_cfg;
 }
 

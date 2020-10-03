@@ -4,15 +4,30 @@
 
 
 //options
-float opt::fps_limit = 144.0f;				//fps limit gets forced to this
-std::string opt::gt_version = "3.45";		//gt version gets spoofed to this
+namespace opt {
+
+	//enhanchements 
+	float	fps_limit	=	144.0f;		//fps limit gets forced to this
+	float	gt_version	=	3.45f;		//gt version gets spoofed to this
+
+	//cheats
+	namespace cheat {
+		bool	punch_cooldown_on	=	true;	//toggle: punch cooldown
+		float	punch_cooldown_val	=	1.15f;	//punch cooldown timer. i.e fast punch
+	}
+	
+}
 
 //other variables
-HMODULE global::self = NULL;
-HWND global::hwnd = NULL;
-App* global::app = nullptr;
-bool global::unload = false;
-void* global::gt = nullptr;
+namespace global {
+	HMODULE	self	=	NULL;		//pointer to the dll module
+	HWND	hwnd	=	NULL;		//pointer to hwnd of Growtopia window
+	App*	app		=	nullptr;	//pointer to App instance
+	bool	unload	=	false;		//proces terminates when set to true
+	void*	gt		=	nullptr;	//pointer to growtopia base address
+}
+
+
 
 
 //unused for now, from private internal, might use later.
