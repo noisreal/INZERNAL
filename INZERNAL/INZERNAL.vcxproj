@@ -92,7 +92,10 @@
     <ClInclude Include="proton\PlatformSetup.h" />
     <ClInclude Include="proton\RTFileFormat.h" />
     <ClInclude Include="proton\Variant.h" />
+    <ClInclude Include="proton\variant2.hpp" />
     <ClInclude Include="proton\VariantDB.h" />
+    <ClInclude Include="proton\vector2.hpp" />
+    <ClInclude Include="sdk\AvatarRenderData.h" />
     <ClInclude Include="sdk\GameLogic.h" />
     <ClInclude Include="sdk\GameUpdatePacket.h" />
     <ClInclude Include="sdk\NetAvatar.h" />
@@ -241,7 +244,10 @@
     </Link>
     <PostBuildEvent>
       <Command>cd $(SolutionDir)bin\
-del *.exp</Command>
+del *.exp
+del *.lib
+del *.pdb
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

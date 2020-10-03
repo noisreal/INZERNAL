@@ -30,6 +30,7 @@ class NetAvatar;
 class LevelTouchComponent;
 class WorldCamera;
 class EnetPeer;
+class variantlist_t;
 
 namespace types {
 	//hooks
@@ -42,9 +43,12 @@ namespace types {
 	using	SendPacketRaw				= void(__cdecl*)(int, GameUpdatePacket*, int, void*, EnetPeer*, int);
 	using	HandleTouch					= void(__cdecl*)( LevelTouchComponent*, CL_Vec2f, bool);
 	using	WorldCamera_OnUpdate		= void(__cdecl*)(WorldCamera*, CL_Vec2f, CL_Vec2f);
+	using	UpdateFromNetAvatar			= void(__cdecl*)(AvatarRenderData*, NetAvatar*);
+
 
 	//other functions, not hooked
 	using	WorldToScreen				= void(__cdecl*)(WorldCamera*, CL_Vec2f&, CL_Vec2f&);
+	using	OnDataConfig				= void(__cdecl*)(NetAvatar*, variantlist_t*);
 }
 
 //from private internal, might be used later on, so bringing it for now
@@ -68,10 +72,12 @@ namespace opt {
 	extern float	gt_version;
 	extern float	fps_limit;
 	extern bool		tp_click;
+	extern bool		mod_zoom;
 
 	namespace cheat {
 		extern bool		punch_cooldown_on;
 		extern float	punch_cooldown_val;
+		extern bool		dev_zoom;
 	}
 	
 }

@@ -11,11 +11,14 @@ namespace opt {
 	//enhanchements 
 	float	fps_limit	=	144.0f;		//fps limit gets forced to this
 	float	gt_version	=	3.45f;		//gt version gets spoofed to this
-	bool	tp_click	=	true;		
+	bool	tp_click	=	true;		//when on, holding CTRL allows you to tp to mouse location.
+	bool	mod_zoom	=	true;		//unlimited zoom. Cant ban you. cant punch further, only view.
+
 	//cheats
 	namespace cheat {
 		bool	punch_cooldown_on	=	true;	//toggle: punch cooldown
 		float	punch_cooldown_val	=	0.15f;	//punch cooldown timer. i.e fast punch
+		bool	dev_zoom			=	false;	//unlimited zoom + unlimited build/punch. The latter can ban, use at your own caution.
 	}
 	
 }

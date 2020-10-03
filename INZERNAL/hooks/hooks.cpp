@@ -2,13 +2,13 @@
 #include <core/gt.h>
 #include <core/utils.h>
 #include <hooks/hooks.h>
+#include <hooks\SendPacketRaw.h>
 #include <intrin.h>
 #include <sdk/sdk.h>
 #include <stdio.h>
 #include <windows.h>
 #include <iomanip>
 #include <thread>
-#include <hooks\SendPacketRaw.h>
 
 #define ORIGINAL(x) types::x hooks::orig::##x{};
 #define MAKEHOOK(x) MH_CreateHook(LPVOID(##x), hooks::##x, (void**)(&orig::##x));
@@ -23,6 +23,7 @@ ORIGINAL(ObjectMap_HandlePacket);
 ORIGINAL(SendPacketRaw);
 ORIGINAL(HandleTouch);
 ORIGINAL(WorldCamera_OnUpdate);
+ORIGINAL(UpdateFromNetAvatar);
 
 WNDPROC hooks::orig::wndproc; //wndproc is special case
 
@@ -30,6 +31,8 @@ IDirect3DDevice9* device = nullptr;
 bool canrender = false;
 
 void hooks::init() {
+    utils::unprotect_process();
+
     global::hwnd = FindWindowA(nullptr, "Growtopia");
 
     const auto base = global::gt;
@@ -49,13 +52,14 @@ void hooks::init() {
         return;
     }
     auto vtable = *reinterpret_cast<void***>(device);
-    ;
     if (device) {
         device->Release();
         device = nullptr;
     }
 
     // clang-format off
+
+
 	//this is where all the function signatures are 
 	auto
 		App_GetVersion                  = utils::find_func_start("28 FF 15 ?? ?? ?? ?? FF 15"),
@@ -66,7 +70,8 @@ void hooks::init() {
 		ObjectMap_HandlePacket          = utils::find_func_start("44 8B ?? ?? 41 83 f8 FF 75 ?? 44"),
 		SendPacketRaw                   = utils::find_func_start("00 81 FE 40 42 0F 00"),
 		HandleTouch                     = utils::find_func_start("83 B8 ?? ?? ?? ?? 12 75"),
-        WorldCamera_OnUpdate            = utils::find_func_start("89 43 10 0f 2f");
+        WorldCamera_OnUpdate            = utils::find_func_start("89 43 10 0f 2f"),
+        UpdateFromNetAvatar             = utils::find_func_start("32 21 00 00 66 39");
 
 	MAKEHOOK(App_GetVersion);
 	MAKEHOOK(BaseApp_SetFPSLimit);
@@ -77,6 +82,8 @@ void hooks::init() {
 	MAKEHOOK(SendPacketRaw);
 	MAKEHOOK(HandleTouch);
     MAKEHOOK(WorldCamera_OnUpdate);
+    MAKEHOOK(UpdateFromNetAvatar);
+
 
 	orig::wndproc = WNDPROC(SetWindowLongPtrW(global::hwnd, -4, LONG_PTR(hooked_wndproc)));
 
@@ -84,10 +91,12 @@ void hooks::init() {
 
     MH_EnableHook(MH_ALL_HOOKS);
     utils::printc("93", "Hooks have been setup!");
-    utils::unprotect_process();
+ 
 }
 
 void hooks::destroy() {
+
+    SetWindowLongPtr(global::hwnd, -4, LONG_PTR(orig::wndproc));
 RETRY:
     if (MH_OK != MH_DisableHook(MH_ALL_HOOKS)) {
         auto res = MessageBox(GetForegroundWindow(), L"Hooks could not be reverted", L"Internal", MB_ABORTRETRYIGNORE | MB_ICONERROR | MB_TOPMOST);
@@ -100,7 +109,6 @@ RETRY:
                 break;
         }
     }
-    SetWindowLongPtr(global::hwnd, -4, LONG_PTR(orig::wndproc));
 }
 
 float __cdecl hooks::App_GetVersion(App* app) {
@@ -111,7 +119,6 @@ float __cdecl hooks::App_GetVersion(App* app) {
     };
     float version = opt::gt_version;
     utils::printc("93", "spoofed version: %.3f", version);
-    Sleep(100);
     return version;
 }
 
@@ -202,11 +209,10 @@ bool __cdecl hooks::ObjectMap_HandlePacket(WorldObjectMap* map, GameUpdatePacket
 }
 
 void __cdecl hooks::SendPacketRaw(int type, GameUpdatePacket* packet, int size, void* ext, EnetPeer* peer, int flag) {
-    SendPacketRaw::Hook(orig::SendPacketRaw, type, packet, size, ext, peer, flag);
+    SendPacketRawHook::Execute(orig::SendPacketRaw, type, packet, size, ext, peer, flag);
 }
 
 void __cdecl hooks::HandleTouch(LevelTouchComponent* touch, CL_Vec2f pos, bool started) {
-
     if (opt::tp_click && GetAsyncKeyState(VK_CONTROL)) {
         //localplayer is guaranteed to be a valid pointer here according to xrefs
         auto local = sdk::gamelogic()->GetLocalPlayer();
@@ -216,7 +222,6 @@ void __cdecl hooks::HandleTouch(LevelTouchComponent* touch, CL_Vec2f pos, bool s
     }
     else
         orig::HandleTouch(touch, pos, started);
-
 }
 
 void __cdecl hooks::WorldCamera_OnUpdate(WorldCamera* camera, CL_Vec2f unk, CL_Vec2f unk2) {
@@ -224,4 +229,9 @@ void __cdecl hooks::WorldCamera_OnUpdate(WorldCamera* camera, CL_Vec2f unk, CL_V
         return;
 
     orig::WorldCamera_OnUpdate(camera, unk, unk2);
+}
+
+//for future usage
+void __cdecl hooks::UpdateFromNetAvatar(AvatarRenderData* render_data, NetAvatar* player) {
+    orig::UpdateFromNetAvatar(render_data, player);
 }

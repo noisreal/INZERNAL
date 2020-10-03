@@ -30,6 +30,7 @@ namespace hooks {
         TYPE(SendPacketRaw);
         TYPE(HandleTouch);
         TYPE(WorldCamera_OnUpdate);
+        TYPE(UpdateFromNetAvatar);
 
         extern WNDPROC wndproc;
     } // namespace orig
@@ -48,7 +49,7 @@ namespace hooks {
 	void	__cdecl		SendPacketRaw(int type, GameUpdatePacket* packet, int size, void* ext, EnetPeer* peer, int flag);
 	void	__cdecl		HandleTouch(LevelTouchComponent* touch, CL_Vec2f pos, bool started);
     void    __cdecl     WorldCamera_OnUpdate(WorldCamera* camera, CL_Vec2f unk, CL_Vec2f unk2);
-
+    void    __cdecl     UpdateFromNetAvatar(AvatarRenderData* render_data, NetAvatar* player);
 
 
     // clang-format on

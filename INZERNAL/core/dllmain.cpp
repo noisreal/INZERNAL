@@ -57,8 +57,5 @@ BOOL WINAPI DllMain(HINSTANCE dll, DWORD reason, LPVOID reserved)
 		CreateThread(nullptr, 0, LPTHREAD_START_ROUTINE(on_inject), nullptr, 0, nullptr);
 		return 1;
 	}
-	else if (reason == DLL_PROCESS_DETACH) {
-		on_exit();
-	}
 	return 0;
 }

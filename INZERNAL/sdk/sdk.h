@@ -3,6 +3,7 @@
 #include <sdk/GameLogic.h>
 #include <sdk/GameUpdatePacket.h>
 #include <sdk/NetAvatar.h>
+#include <sdk/AvatarRenderData.h>
 
 class EnetPeer;
 namespace sdk {
