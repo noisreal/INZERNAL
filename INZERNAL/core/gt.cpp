@@ -5,7 +5,7 @@
 bool gt::patch_banbypass()
 {
 	try {
-		static auto banbypass = utils::find_pattern("00 3B C1 75 ? 85 C9") + 3;
+		static auto banbypass = utils::find_pattern("00 3B C1 75 ? 85 C9", false) + 3;
 		if (banbypass <= 0x3) //did not find ban bypass, checking if its already patched
 		{
 			banbypass = utils::find_pattern("00 3B C1 90 90 85 C9") + 3;
@@ -13,6 +13,7 @@ bool gt::patch_banbypass()
 				throw std::runtime_error("could not find ban bypass");
 
 			printf("ban bypass already patched\n");
+			return true;
 		}
 
 		auto bypassed = utils::patch_bytes<2>(banbypass, "\x90\x90");

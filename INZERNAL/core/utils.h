@@ -14,7 +14,7 @@ namespace utils {
 	void printc(std::string color, const char* fmt, ...);
 	char read_key();
 	uint8_t* read_file(const std::string& file, uint32_t& size);
-	
+
 	template<typename t>
 	bool patch_ptr(uintptr_t addr, t data) {
 		void* address = reinterpret_cast<void*>(addr);
@@ -39,7 +39,7 @@ namespace utils {
 	}
 
 	template<typename t = uintptr_t>
-	t find_pattern(const char* pat) {
+	t find_pattern(const char* pat, bool notify = true) {
 		static auto pat2byt = [](const char* pat) {
 			std::vector<int> bytes{};
 			auto start = (char*)pat;
@@ -80,7 +80,8 @@ namespace utils {
 			if (found)
 				return t(i);
 		}
-		printf("a pattern has not been found: %s\n", pat);
+		if (notify)
+			printf("a pattern has not been found: %s\n", pat);
 		return t(0);
 	}
 
@@ -128,10 +129,10 @@ namespace utils {
 		printf("a pattern has not been found: %s\n", pat);
 		return t(0);
 	}
-	
+
 	int random(int min, int max);
 	void seed_random();
-	
+
 	std::string hex_str(unsigned char data);
 	std::string between(const std::string& s, const std::string& start_delim, const std::string& stop_delim);
 	bool replace(std::string& str, const std::string& from, const std::string& to);

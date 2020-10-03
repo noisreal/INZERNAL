@@ -56,7 +56,7 @@ namespace injector
                 return;
             }
 
-            Console.WriteLine("F1 to inject. F3 to uninject.");
+            Console.WriteLine("F1 to inject\tF3 to uninject\tF4 to quit");
             intercept.setup();
 
         }
@@ -93,8 +93,6 @@ namespace injector
             Application.Run();
             Console.WriteLine("Unhooking.");
             intercept.unhook();
-            Console.ReadKey();
-
         }
         public static void unhook() => UnhookWindowsHookEx(_hookID);
 
@@ -118,6 +116,11 @@ namespace injector
 
                 if ((Keys)vkCode == Keys.F1)
                     Program.inject();
+                else if ((Keys)vkCode == Keys.F4)
+                {
+                    unhook();
+                    Application.Exit();
+                }
             }
 
             return CallNextHookEx(_hookID, nCode, wParam, lParam);
