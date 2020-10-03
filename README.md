@@ -24,7 +24,8 @@ Growtopia internal cheat focused around enhancements and framework, that is load
 
 ### Verified working versions
 * Some patterns might be outdated for some versions
+* You can find some of the growtopia binaries in "gt" folder
 * Verified working Growtopia versions are
-  * V.41
+  * V.41 (Recommended version)
   * V3.39
   * V.32
