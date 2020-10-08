@@ -1,3 +1,4 @@
+#pragma once
 #ifndef MiscUtils_h__
 #define MiscUtils_h__
 

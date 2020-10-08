@@ -15,7 +15,7 @@ namespace opt {
 	bool		mod_zoom	=	true;		//unlimited zoom. Cant ban you. cant punch further, only view. NOTE: If for some reason you can punch further, re-join.
 	bool		spoof_login	=	true;		//whether or not to spoof mac, hash2, wk, rid, etc on login. GT version spoofed even when off.
 	bool		spoof_name	=	true;		//Also set the requestedName field to random. Might be unwanted for non grow-id accounts.
-	WinSpoof	win_spoof	=	::Mimic;	//Mode of zf/fz spoofing mode. See the WinSpoof enum for more details.
+	WinSpoof	spoof_win	=	::wsMimic;	//Mode of zf/fz spoofing mode. See the WinSpoof enum for more details.
 
 	//cheats
 	namespace cheat {

@@ -2,6 +2,7 @@
 #include <core/gt.h>
 #include <core/utils.h>
 #include <hooks/hooks.h>
+#include <hooks\SendPacket.h>
 #include <hooks\SendPacketRaw.h>
 #include <intrin.h>
 #include <sdk/sdk.h>
@@ -9,7 +10,6 @@
 #include <windows.h>
 #include <iomanip>
 #include <thread>
-#include <hooks\SendPacket.h>
 
 #define ORIGINAL(x) types::x hooks::orig::##x{};
 #define MAKEHOOK(x) MH_CreateHook(LPVOID(##x), hooks::##x, (void**)(&orig::##x));
@@ -91,6 +91,7 @@ void hooks::init() {
 	orig::wndproc = WNDPROC(SetWindowLongPtrW(global::hwnd, -4, LONG_PTR(hooked_wndproc)));
 
     // clang-format on
+
 
     MH_EnableHook(MH_ALL_HOOKS);
     utils::printc("93", "Hooks have been setup!");

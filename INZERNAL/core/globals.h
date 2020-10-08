@@ -52,10 +52,10 @@ namespace types {
 	using	OnDataConfig				= void(__cdecl*)(NetAvatar*, variantlist_t*);
 }
 
-enum WinSpoof : int {
-	Off = 0,		//will not try to spoof anything
-	Random = 1,		//will set random values to zf and fz as usual
-	Mimic = 2		//will set unmodified newest growtopia.exe values to avoid fake win-ver tracking. needs manual updating
+enum WinSpoof {
+	wsOff = 0,		//will not try to spoof anything
+	wsRandom = 1,		//will set random values to zf and fz as usual
+	wsMimic = 2		//will set unmodified newest growtopia.exe values to avoid fake win-ver tracking. needs manual updating
 };
 //from private internal, might be used later on, so bringing it for now
 namespace col {
@@ -81,6 +81,7 @@ namespace opt {
 	extern bool		mod_zoom;
 	extern bool		spoof_login;
 	extern bool		spoof_name;
+	extern WinSpoof	spoof_win;
 
 	namespace cheat {
 		extern bool		punch_cooldown_on;
