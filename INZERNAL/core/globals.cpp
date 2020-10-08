@@ -9,10 +9,13 @@
 namespace opt {
 
 	//enhanchements 
-	float	fps_limit	=	144.0f;		//fps limit gets forced to this
-	float	gt_version	=	3.45f;		//gt version gets spoofed to this
-	bool	tp_click	=	true;		//when on, holding CTRL allows you to tp to mouse location.
-	bool	mod_zoom	=	true;		//unlimited zoom. Cant ban you. cant punch further, only view. NOTE: If for some reason you can punch further, re-join.
+	float		fps_limit	=	144.0f;		//fps limit gets forced to this
+	float		gt_version	=	3.45f;		//gt version gets spoofed to this
+	bool		tp_click	=	true;		//when on, holding CTRL allows you to tp to mouse location.
+	bool		mod_zoom	=	true;		//unlimited zoom. Cant ban you. cant punch further, only view. NOTE: If for some reason you can punch further, re-join.
+	bool		spoof_login	=	true;		//whether or not to spoof mac, hash2, wk, rid, etc on login. GT version spoofed even when off.
+	bool		spoof_name	=	true;		//Also set the requestedName field to random. Might be unwanted for non grow-id accounts.
+	WinSpoof	win_spoof	=	::Mimic;	//Mode of zf/fz spoofing mode. See the WinSpoof enum for more details.
 
 	//cheats
 	namespace cheat {

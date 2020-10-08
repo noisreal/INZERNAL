@@ -9,6 +9,7 @@
 #include <windows.h>
 #include <iomanip>
 #include <thread>
+#include <hooks\SendPacket.h>
 
 #define ORIGINAL(x) types::x hooks::orig::##x{};
 #define MAKEHOOK(x) MH_CreateHook(LPVOID(##x), hooks::##x, (void**)(&orig::##x));
@@ -93,11 +94,9 @@ void hooks::init() {
 
     MH_EnableHook(MH_ALL_HOOKS);
     utils::printc("93", "Hooks have been setup!");
- 
 }
 
 void hooks::destroy() {
-
     SetWindowLongPtr(global::hwnd, -4, LONG_PTR(orig::wndproc));
 RETRY:
     if (MH_OK != MH_DisableHook(MH_ALL_HOOKS)) {
@@ -120,7 +119,12 @@ float __cdecl hooks::App_GetVersion(App* app) {
         utils::printc("93", "Modified FPS limit!");
     };
     float version = opt::gt_version;
-    utils::printc("93", "spoofed version: %.3f", version);
+    static float real_ver = orig::App_GetVersion(app);
+    if (real_ver > version) //dont spoof if we are running newer client. internal might just be outdated, avoid recompilation.
+        version = real_ver;
+    else
+        utils::printc("93", "spoofed version: %.3f", version);
+
     return version;
 }
 
@@ -239,4 +243,5 @@ void __cdecl hooks::UpdateFromNetAvatar(AvatarRenderData* render_data, NetAvatar
 }
 
 void __cdecl hooks::SendPacket(int type, std::string packet, EnetPeer* peer) {
+    SendPacketHook::Execute(orig::SendPacket, type, packet, peer);
 }
