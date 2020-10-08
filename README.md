@@ -2,8 +2,17 @@
 #### Growtopia internal cheat focused around enhancements, clean code, support across versions, and frameworok
 
 
+# 
+
 #### Features
 * Currently adding more, see code for yourself.
+
+# 
+
+### Setup tutorial
+[![INZERNAL setup tutorial](https://i.ytimg.com/vi/0408qVbICEI/hqdefault.jpg)](https://www.youtube.com/watch?v=0408qVbICEI "INZERNAL setup tutorial")
+
+# 
 
 ### Building yourself
 1. Download project
@@ -16,6 +25,8 @@
    * Any custom injector
    * Both injector and patcher
 
+# 
+
 ### Using the injector
 * Keep INZERNAL.dll in the same directory
 * F1 will inject INZERNAL to Growtopia
@@ -23,12 +34,16 @@
 * F4 will quit injector
 * Requires admin permissions due to growtopia changing token permissions
 
+# 
+
 ### Using the patcher
 * Drag any unpatched Growtopia file into patcher
 * Put INZERNAL.dll into same directory as Growtopia
 * When you launch Growtopia, INZERNAL.dll is automatically loaded
 * Does not require admin perms like injector
 * **You can use injector with patched file too**
+
+# 
 
 ### Verified compatible Growtopia versions
 * Some patterns might be outdated for some versions
@@ -38,11 +53,14 @@
   * V.41
   * V3.39
 
+# 
+
 ### Downloads
 * No need to build anything yourself
 * **No support for custom settings right now (will support later)**
 * [Downloads here](https://github.com/ama6nen/INZERNAL/releases)
 
+# 
 
 ### Debugging
 1. Set build to Debug x64
@@ -54,6 +72,7 @@
 * Now you can set breakpoints and trace, etc.
 * You can also keep it attached and unload the library, and then reload it.
 
+# 
 
 ### Acknowledgments
 * This is not **internal**, the first internal ever made for growtopia, that was developed by atipls, me, and tero. 
@@ -61,6 +80,8 @@
 * INZERNAL uses some small parts from internal
 * Patcher made by ness
 * Otherwise this project is fully made by me
+
+# 
 
 ### Dependencies used in this project 
 #### Note that none of these need to be downloaded, they are included in the project
