@@ -11,6 +11,7 @@
 #include <iomanip>
 #include <thread>
 
+
 #define ORIGINAL(x) types::x hooks::orig::##x{};
 #define MAKEHOOK(x) MH_CreateHook(LPVOID(##x), hooks::##x, (void**)(&orig::##x));
 
@@ -243,6 +244,6 @@ void __cdecl hooks::UpdateFromNetAvatar(AvatarRenderData* render_data, NetAvatar
     orig::UpdateFromNetAvatar(render_data, player);
 }
 
-void __cdecl hooks::SendPacket(int type, std::string packet, EnetPeer* peer) {
+void __cdecl hooks::SendPacket(int type, const std::string& packet, EnetPeer* peer) {
     SendPacketHook::Execute(orig::SendPacket, type, packet, peer);
 }

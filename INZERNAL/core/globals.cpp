@@ -1,6 +1,5 @@
 #pragma once
 #include "globals.h"
-#include <string>
 
 
 // clang-format off
@@ -16,6 +15,8 @@ namespace opt {
 	bool		spoof_login	=	true;		//whether or not to spoof mac, hash2, wk, rid, etc on login. GT version spoofed even when off.
 	bool		spoof_name	=	true;		//Also set the requestedName field to random. Might be unwanted for non grow-id accounts.
 	WinSpoof	spoof_win	=	::wsMimic;	//Mode of zf/fz spoofing mode. See the WinSpoof enum for more details.
+	FlagMode	flag_mode	=	::fmRandom; //See FlagMode enum for details.
+	std::string	flag		=	"us";		//set if flag_mode is set to fmCustom
 
 	//cheats
 	namespace cheat {

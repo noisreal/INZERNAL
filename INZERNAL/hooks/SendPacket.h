@@ -21,6 +21,9 @@ class SendPacketHook {
             var.set("mac", mac);
             var.set("wk", gt::generate_rid());
             var.set("rid", gt::generate_rid());
+            var.set("hash", std::to_string(utils::random(INT_MIN, INT_MAX)));
+            var.set("hash2", std::to_string(hash2));
+            var.set("meta", gt::generate_meta());
 
             if (opt::spoof_win == WinSpoof::wsRandom) {
                 var.set("fz", std::to_string(utils::random(INT_MIN, INT_MAX)));
@@ -31,9 +34,11 @@ class SendPacketHook {
                 var.set("zf", "-128084874");
             }
 
-            var.set("hash", std::to_string(utils::random(INT_MIN, INT_MAX)));
-            var.set("hash2", std::to_string(hash2));
-            var.set("meta", gt::generate_meta());
+
+            if (opt::flag_mode == FlagMode::fmRandom)
+                var.set("country", gt::get_random_flag());
+            else if (opt::flag_mode == FlagMode::fmCustom)
+                var.set("country", opt::flag);
 
             //never really paid attention to this before but this indeed could be used to track too
             var.set("player_age", std::to_string(utils::random(21, 60)));
@@ -42,6 +47,7 @@ class SendPacketHook {
                 var.set("requestedName", utils::rnd(utils::random(4, 10)));
 
             packet = var.serialize();
+            printf("%s\n", packet.c_str());
         }
 
         orig(type, packet, peer);

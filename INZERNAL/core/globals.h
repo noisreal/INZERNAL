@@ -41,7 +41,7 @@ namespace types {
 	using	CanPunchOrBuildNow			= bool(__cdecl*)(AvatarRenderData*);
 	using	ObjectMap_HandlePacket		= bool(__cdecl*)(WorldObjectMap*, GameUpdatePacket*);
 	using	SendPacketRaw				= void(__cdecl*)(int, GameUpdatePacket*, int, void*, EnetPeer*, int);
-	using	SendPacket					= void(__cdecl*)(int, std::string, EnetPeer*);
+	using	SendPacket					= void(__cdecl*)(int, const std::string&, EnetPeer*);
 	using	HandleTouch					= void(__cdecl*)( LevelTouchComponent*, CL_Vec2f, bool);
 	using	WorldCamera_OnUpdate		= void(__cdecl*)(WorldCamera*, CL_Vec2f, CL_Vec2f);
 	using	UpdateFromNetAvatar			= void(__cdecl*)(AvatarRenderData*, NetAvatar*);
@@ -54,8 +54,13 @@ namespace types {
 
 enum WinSpoof {
 	wsOff = 0,		//will not try to spoof anything
-	wsRandom = 1,		//will set random values to zf and fz as usual
+	wsRandom = 1,	//will set random values to zf and fz as usual
 	wsMimic = 2		//will set unmodified newest growtopia.exe values to avoid fake win-ver tracking. needs manual updating
+};
+enum FlagMode {
+	fmKeep = 0,		//keep your flag
+	fmRandom = 1,	//pick random flag from gt folder
+	fmCustom = 2,	//use custom flag
 };
 //from private internal, might be used later on, so bringing it for now
 namespace col {
@@ -75,13 +80,15 @@ namespace col {
 
 
 namespace opt {
-	extern float	gt_version;
-	extern float	fps_limit;
-	extern bool		tp_click;
-	extern bool		mod_zoom;
-	extern bool		spoof_login;
-	extern bool		spoof_name;
-	extern WinSpoof	spoof_win;
+	extern float		gt_version;
+	extern float		fps_limit;
+	extern bool			tp_click;
+	extern bool			mod_zoom;
+	extern bool			spoof_login;
+	extern bool			spoof_name;
+	extern WinSpoof		spoof_win;
+	extern FlagMode		flag_mode;
+	extern std::string	flag;
 
 	namespace cheat {
 		extern bool		punch_cooldown_on;
