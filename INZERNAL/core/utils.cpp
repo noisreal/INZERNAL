@@ -421,4 +421,8 @@ uintptr_t utils::find_func_has(std::vector<const char*> to_be_found, uint32_t ma
     return 0x0;
 }
 
+bool utils::is_number(const std::string& s) {
+    return !s.empty() && std::find_if(s.begin() + (*s.data() == '-' ? 1 : 0), s.end(), [](char c) { return !std::isdigit(c); }) == s.end();
+}
+
 #pragma endregion

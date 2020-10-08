@@ -41,6 +41,7 @@ namespace types {
 	using	CanPunchOrBuildNow			= bool(__cdecl*)(AvatarRenderData*);
 	using	ObjectMap_HandlePacket		= bool(__cdecl*)(WorldObjectMap*, GameUpdatePacket*);
 	using	SendPacketRaw				= void(__cdecl*)(int, GameUpdatePacket*, int, void*, EnetPeer*, int);
+	using	SendPacket					= void(__cdecl*)(int, std::string, EnetPeer*);
 	using	HandleTouch					= void(__cdecl*)( LevelTouchComponent*, CL_Vec2f, bool);
 	using	WorldCamera_OnUpdate		= void(__cdecl*)(WorldCamera*, CL_Vec2f, CL_Vec2f);
 	using	UpdateFromNetAvatar			= void(__cdecl*)(AvatarRenderData*, NetAvatar*);

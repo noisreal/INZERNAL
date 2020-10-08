@@ -24,6 +24,7 @@ ORIGINAL(SendPacketRaw);
 ORIGINAL(HandleTouch);
 ORIGINAL(WorldCamera_OnUpdate);
 ORIGINAL(UpdateFromNetAvatar);
+ORIGINAL(SendPacket);
 
 WNDPROC hooks::orig::wndproc; //wndproc is special case
 
@@ -71,7 +72,8 @@ void hooks::init() {
 		SendPacketRaw                   = utils::find_func_start("00 81 FE 40 42 0F 00"),
 		HandleTouch                     = utils::find_func_start("83 B8 ?? ?? ?? ?? 12 75"),
         WorldCamera_OnUpdate            = utils::find_func_start("89 43 10 0f 2f"),
-        UpdateFromNetAvatar             = utils::find_func_start("32 21 00 00 66 39");
+        UpdateFromNetAvatar             = utils::find_func_start("32 21 00 00 66 39"),
+        SendPacket                      = detail::get_call("02 00 00 00 e8 ? ? ? ? 90 48 8d 4c 24 50", 4);
 
 	MAKEHOOK(App_GetVersion);
 	MAKEHOOK(BaseApp_SetFPSLimit);
@@ -83,7 +85,7 @@ void hooks::init() {
 	MAKEHOOK(HandleTouch);
     MAKEHOOK(WorldCamera_OnUpdate);
     MAKEHOOK(UpdateFromNetAvatar);
-
+    MAKEHOOK(SendPacket);
 
 	orig::wndproc = WNDPROC(SetWindowLongPtrW(global::hwnd, -4, LONG_PTR(hooked_wndproc)));
 
@@ -234,4 +236,7 @@ void __cdecl hooks::WorldCamera_OnUpdate(WorldCamera* camera, CL_Vec2f unk, CL_V
 //for future usage
 void __cdecl hooks::UpdateFromNetAvatar(AvatarRenderData* render_data, NetAvatar* player) {
     orig::UpdateFromNetAvatar(render_data, player);
+}
+
+void __cdecl hooks::SendPacket(int type, std::string packet, EnetPeer* peer) {
 }

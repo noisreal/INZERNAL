@@ -12,7 +12,7 @@ namespace opt {
 	float	fps_limit	=	144.0f;		//fps limit gets forced to this
 	float	gt_version	=	3.45f;		//gt version gets spoofed to this
 	bool	tp_click	=	true;		//when on, holding CTRL allows you to tp to mouse location.
-	bool	mod_zoom	=	true;		//unlimited zoom. Cant ban you. cant punch further, only view.
+	bool	mod_zoom	=	true;		//unlimited zoom. Cant ban you. cant punch further, only view. NOTE: If for some reason you can punch further, re-join.
 
 	//cheats
 	namespace cheat {

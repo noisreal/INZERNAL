@@ -66,6 +66,7 @@
     <ClInclude Include="core\nlhomann\json.hpp" />
     <ClInclude Include="core\utils.h" />
     <ClInclude Include="hooks\hooks.h" />
+    <ClInclude Include="hooks\SendPacket.h" />
     <ClInclude Include="hooks\SendPacketRaw.h" />
     <ClInclude Include="proton\bitmap.h" />
     <ClInclude Include="proton\clanlib\angle.h" />
@@ -91,6 +92,7 @@
     <ClInclude Include="proton\PlatformPrecomp.h" />
     <ClInclude Include="proton\PlatformSetup.h" />
     <ClInclude Include="proton\RTFileFormat.h" />
+    <ClInclude Include="proton\RTParam.hpp" />
     <ClInclude Include="proton\Variant.h" />
     <ClInclude Include="proton\variant2.hpp" />
     <ClInclude Include="proton\VariantDB.h" />

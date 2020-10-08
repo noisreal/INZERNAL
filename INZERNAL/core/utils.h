@@ -145,7 +145,7 @@ namespace utils {
 	uintptr_t find_func_end(uintptr_t addr);
 	uintptr_t find_pattern_in_area(uintptr_t start, uintptr_t end, const char* pat);
     uintptr_t find_func_has(std::vector<const char*> to_be_found, uint32_t max_length = 0);
-
+    bool is_number(const std::string& s);
 
 	bool dir_exists(LPCSTR name);
 	std::string format(const char* msg, ...);
