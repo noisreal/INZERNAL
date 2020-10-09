@@ -30,6 +30,8 @@
     <ClCompile Include="core\miniz\miniz.c" />
     <ClCompile Include="core\utils.cpp" />
     <ClCompile Include="hooks\hooks.cpp" />
+    <ClCompile Include="menu\main_tab.cpp" />
+    <ClCompile Include="menu\menu.cpp" />
     <ClCompile Include="proton\clanlib\angle.cpp" />
     <ClCompile Include="proton\clanlib\line_segment.cpp" />
     <ClCompile Include="proton\clanlib\mat2.cpp" />
@@ -68,6 +70,7 @@
     <ClInclude Include="hooks\hooks.h" />
     <ClInclude Include="hooks\SendPacket.h" />
     <ClInclude Include="hooks\SendPacketRaw.h" />
+    <ClInclude Include="menu\menu.h" />
     <ClInclude Include="proton\bitmap.h" />
     <ClInclude Include="proton\clanlib\angle.h" />
     <ClInclude Include="proton\clanlib\circle.h" />

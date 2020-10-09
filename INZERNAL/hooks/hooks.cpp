@@ -161,8 +161,8 @@ LRESULT __stdcall hooks::hooked_wndproc(HWND wnd, UINT msg, WPARAM wparam, LPARA
     active = GetActiveWindow() == global::hwnd;
 
     //TODO: with imgui
-    //if (orig::wndproc(wnd, msg, wparam, lparam))
-    //	return true;
+    if (menu::wndproc(wnd, msg, wparam, lparam))
+    	return true;
 
     if (msg == WM_KEYDOWN && (wparam == VK_CONTROL || wparam == VK_LCONTROL || wparam == VK_RCONTROL))
         return true;

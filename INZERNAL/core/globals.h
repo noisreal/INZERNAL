@@ -99,11 +99,12 @@ namespace opt {
 }
 
 namespace global {
-	extern HMODULE	self;
-	extern App*		app;
-	extern bool		unload;
-	extern HWND		hwnd;
-	extern void*	gt;
+	extern HMODULE		self;
+	extern App*			app;
+	extern bool			unload;
+	extern HWND			hwnd;
+	extern void*		gt;
+	extern std::string	version;
 	//	extern nlohmann::json m_cfg;
 }
 

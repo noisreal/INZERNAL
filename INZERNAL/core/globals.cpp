@@ -29,11 +29,12 @@ namespace opt {
 
 //other variables
 namespace global {
-	HMODULE	self	=	NULL;		//pointer to the dll module
-	HWND	hwnd	=	NULL;		//pointer to hwnd of Growtopia window
-	App*	app		=	nullptr;	//pointer to App instance
-	bool	unload	=	false;		//proces terminates when set to true
-	void*	gt		=	nullptr;	//pointer to growtopia base address
+	HMODULE		self	=	NULL;		//pointer to the dll module
+	HWND		hwnd	=	NULL;		//pointer to hwnd of Growtopia window
+	App*		app		=	nullptr;	//pointer to App instance
+	bool		unload	=	false;		//proces terminates when set to true
+	void*		gt		=	nullptr;	//pointer to growtopia base address
+	std::string	version	=	"0.3";		//INZERNAL version
 }
 
 // clang-format on
