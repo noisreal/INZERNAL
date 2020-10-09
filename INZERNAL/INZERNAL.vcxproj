@@ -30,6 +30,11 @@
     <ClCompile Include="core\miniz\miniz.c" />
     <ClCompile Include="core\utils.cpp" />
     <ClCompile Include="hooks\hooks.cpp" />
+    <ClCompile Include="menu\imgui\imgui.cpp" />
+    <ClCompile Include="menu\imgui\imgui_draw.cpp" />
+    <ClCompile Include="menu\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="menu\imgui\impl\imgui_impl_dx9.cpp" />
+    <ClCompile Include="menu\imgui\impl\imgui_impl_win32.cpp" />
     <ClCompile Include="menu\main_tab.cpp" />
     <ClCompile Include="menu\menu.cpp" />
     <ClCompile Include="proton\clanlib\angle.cpp" />
@@ -70,6 +75,14 @@
     <ClInclude Include="hooks\hooks.h" />
     <ClInclude Include="hooks\SendPacket.h" />
     <ClInclude Include="hooks\SendPacketRaw.h" />
+    <ClInclude Include="menu\imgui\imconfig.h" />
+    <ClInclude Include="menu\imgui\imgui.h" />
+    <ClInclude Include="menu\imgui\imgui_internal.h" />
+    <ClInclude Include="menu\imgui\impl\imgui_impl_dx9.h" />
+    <ClInclude Include="menu\imgui\impl\imgui_impl_win32.h" />
+    <ClInclude Include="menu\imgui\imstb_rectpack.h" />
+    <ClInclude Include="menu\imgui\imstb_textedit.h" />
+    <ClInclude Include="menu\imgui\imstb_truetype.h" />
     <ClInclude Include="menu\menu.h" />
     <ClInclude Include="proton\bitmap.h" />
     <ClInclude Include="proton\clanlib\angle.h" />
