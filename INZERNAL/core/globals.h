@@ -104,6 +104,8 @@ namespace global {
 	extern bool			unload;
 	extern HWND			hwnd;
 	extern void*		gt;
+	extern bool			load;
+	extern bool			draw;
 	extern std::string	version;
 	//	extern nlohmann::json m_cfg;
 }

@@ -5,13 +5,12 @@
 #include <hooks\SendPacket.h>
 #include <hooks\SendPacketRaw.h>
 #include <intrin.h>
+#include <menu\menu.h>
 #include <sdk/sdk.h>
 #include <stdio.h>
 #include <windows.h>
 #include <iomanip>
 #include <thread>
-#include <menu\menu.h>
-
 
 #define ORIGINAL(x) types::x hooks::orig::##x{};
 #define MAKEHOOK(x) MH_CreateHook(LPVOID(##x), hooks::##x, (void**)(&orig::##x));
@@ -50,17 +49,15 @@ void hooks::init() {
     d3dpp.hDeviceWindow = global::hwnd;
     d3dpp.SwapEffect = D3DSWAPEFFECT_COPY;
     d3dpp.Windowed = TRUE;
-    d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_DEFAULT;
+    d3dpp.PresentationInterval = D3DPRESENT_INTERVAL_ONE; //vsync
+    d3dpp.FullScreen_RefreshRateInHz = 0;
     if (FAILED(pD3D->CreateDevice(0, D3DDEVTYPE_HAL, d3dpp.hDeviceWindow, D3DCREATE_SOFTWARE_VERTEXPROCESSING, &d3dpp, &device))) {
         printf("fail: creating device\n");
         pD3D->Release();
         return;
     }
     auto vtable = *reinterpret_cast<void***>(device);
-    if (device) {
-        device->Release();
-        device = nullptr;
-    }
+    //releasing device fucks up vtable if loading with patcher so removed that part.
 
     // clang-format off
 
@@ -95,7 +92,6 @@ void hooks::init() {
 	orig::wndproc = WNDPROC(SetWindowLongPtrW(global::hwnd, -4, LONG_PTR(WndProc)));
 
     // clang-format on
-
 
     MH_EnableHook(MH_ALL_HOOKS);
     utils::printc("93", "Hooks have been setup!");
@@ -165,7 +161,7 @@ LRESULT __stdcall hooks::WndProc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lpara
 
     //TODO: with imgui
     if (menu::WndProc(wnd, msg, wparam, lparam))
-    	return true;
+        return true;
 
     if (msg == WM_KEYDOWN && (wparam == VK_CONTROL || wparam == VK_LCONTROL || wparam == VK_RCONTROL))
         return true;

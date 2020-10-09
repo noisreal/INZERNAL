@@ -34,7 +34,9 @@ namespace global {
 	App*		app		=	nullptr;	//pointer to App instance
 	bool		unload	=	false;		//proces terminates when set to true
 	void*		gt		=	nullptr;	//pointer to growtopia base address
-	std::string	version	=	"0.3";		//INZERNAL version
+	bool		load	=	false;		//menu/imgui initialization status
+	bool		draw	=	false;		//menu draw status. set to true for menu to show up when you inject
+	std::string	version	=	"V0.3";		//INZERNAL version
 }
 
 // clang-format on
