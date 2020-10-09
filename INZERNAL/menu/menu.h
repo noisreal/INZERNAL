@@ -7,6 +7,6 @@ namespace menu {
 
 	void main_tab();
 
-	void endscene(IDirect3DDevice9* device, bool active);
-	bool wndproc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam);
+	void EndScene(IDirect3DDevice9* device, bool active);
+    bool WndProc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam);
 }

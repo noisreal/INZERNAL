@@ -10,6 +10,7 @@
 #include <windows.h>
 #include <iomanip>
 #include <thread>
+#include <menu\menu.h>
 
 
 #define ORIGINAL(x) types::x hooks::orig::##x{};
@@ -27,6 +28,7 @@ ORIGINAL(HandleTouch);
 ORIGINAL(WorldCamera_OnUpdate);
 ORIGINAL(UpdateFromNetAvatar);
 ORIGINAL(SendPacket);
+ORIGINAL(EndScene);
 
 WNDPROC hooks::orig::wndproc; //wndproc is special case
 
@@ -77,6 +79,7 @@ void hooks::init() {
         UpdateFromNetAvatar             = utils::find_func_start("32 21 00 00 66 39"),
         SendPacket                      = detail::get_call("02 00 00 00 e8 ? ? ? ? 90 48 8d 4c 24 50", 4);
 
+    MH_CreateHook(LPVOID(vtable[42]), EndScene, (void**)(&orig::EndScene));
 	MAKEHOOK(App_GetVersion);
 	MAKEHOOK(BaseApp_SetFPSLimit);
 	MAKEHOOK(LogMsg);
@@ -89,7 +92,7 @@ void hooks::init() {
     MAKEHOOK(UpdateFromNetAvatar);
     MAKEHOOK(SendPacket);
 
-	orig::wndproc = WNDPROC(SetWindowLongPtrW(global::hwnd, -4, LONG_PTR(hooked_wndproc)));
+	orig::wndproc = WNDPROC(SetWindowLongPtrW(global::hwnd, -4, LONG_PTR(WndProc)));
 
     // clang-format on
 
@@ -157,11 +160,11 @@ bool __cdecl hooks::NetAvatar_CanMessageT4(NetAvatar* player) {
 }
 
 bool active = false;
-LRESULT __stdcall hooks::hooked_wndproc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam) {
+LRESULT __stdcall hooks::WndProc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam) {
     active = GetActiveWindow() == global::hwnd;
 
     //TODO: with imgui
-    if (menu::wndproc(wnd, msg, wparam, lparam))
+    if (menu::WndProc(wnd, msg, wparam, lparam))
     	return true;
 
     if (msg == WM_KEYDOWN && (wparam == VK_CONTROL || wparam == VK_LCONTROL || wparam == VK_RCONTROL))
@@ -246,4 +249,9 @@ void __cdecl hooks::UpdateFromNetAvatar(AvatarRenderData* render_data, NetAvatar
 
 void __cdecl hooks::SendPacket(int type, const std::string& packet, EnetPeer* peer) {
     SendPacketHook::Execute(orig::SendPacket, type, packet, peer);
+}
+
+long __stdcall hooks::EndScene(IDirect3DDevice9* device) {
+    menu::EndScene(device, active); //Imgui happens here
+    return orig::EndScene(device);
 }

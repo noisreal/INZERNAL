@@ -32,6 +32,7 @@ namespace hooks {
         TYPE(WorldCamera_OnUpdate);
         TYPE(UpdateFromNetAvatar);
         TYPE(SendPacket);
+        TYPE(EndScene);
 
         extern WNDPROC wndproc;
     } // namespace orig
@@ -52,9 +53,12 @@ namespace hooks {
     void    __cdecl     WorldCamera_OnUpdate(WorldCamera* camera, CL_Vec2f unk, CL_Vec2f unk2);
     void    __cdecl     UpdateFromNetAvatar(AvatarRenderData* render_data, NetAvatar* player);
     void    __cdecl     SendPacket(int type, const std::string& packet, EnetPeer* peer);
+    long    __stdcall   EndScene(IDirect3DDevice9* device);
+
+
+    LRESULT __stdcall   WndProc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam);
+
 
     // clang-format on
-
-    LRESULT __stdcall hooked_wndproc(HWND wnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 } // namespace hooks

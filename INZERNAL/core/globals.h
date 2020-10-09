@@ -45,7 +45,7 @@ namespace types {
 	using	HandleTouch					= void(__cdecl*)( LevelTouchComponent*, CL_Vec2f, bool);
 	using	WorldCamera_OnUpdate		= void(__cdecl*)(WorldCamera*, CL_Vec2f, CL_Vec2f);
 	using	UpdateFromNetAvatar			= void(__cdecl*)(AvatarRenderData*, NetAvatar*);
-
+	using	EndScene					= long(__stdcall*)(IDirect3DDevice9*);
 
 	//other functions, not hooked
 	using	WorldToScreen				= void(__cdecl*)(WorldCamera*, CL_Vec2f&, CL_Vec2f&);
